@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addproducts } from "../redux/slices/productsslice";
+// import { addproducts } from "../redux/slices/productsslice";
 import { Link } from "react-router-dom";
 import { addtocart } from "../redux/slices/cartslice";
+
+import {fetchproducts} from '../redux/slices/productsslice'
 
 const ProductListing = () => {
   const dispatch = useDispatch();
@@ -16,11 +18,11 @@ const ProductListing = () => {
   console.log(cartitems)
 
   useEffect(() => {
-    const fetchproducts = async () => {
-      const response = await axios.get("https://fakestoreapi.com/products");
-      dispatch(addproducts(response.data));
-    };
-    fetchproducts();
+    // const fetchproducts = async () => {
+    //   const response = await axios.get("https://fakestoreapi.com/products");
+    //   dispatch(addproducts(response.data));
+    // };
+    dispatch(fetchproducts());
   }, []);
 
   return (
